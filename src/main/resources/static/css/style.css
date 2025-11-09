@@ -10,13 +10,23 @@ html {
 
 body {
     font: 11pt 'Raleway', sans-serif;
-    color: #111111;
+    background-color: #cce5ff !important;;
     margin: 0;
     min-height: 100vh;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), white url(https://source.unsplash.com/DqgMHzeio7g) center center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.form-container,
+.summary-container {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 600px;
+    margin: 50px auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
 }
 
 main {
@@ -26,3 +36,43 @@ main {
     border-radius: 1rem;
     background-color: rgba(255, 255, 255, 0.5);
 }
+
+h1 {
+    margin-bottom: 30px;
+}
+
+.form-label,
+.summary-container label {
+    font-weight: bold;
+}
+
+input.form-control,
+select.form-select {
+    margin-bottom: 15px;
+}
+
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+button.btn-primary,
+a.btn-secondary {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+}
+
+.mb-3.text-start {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+a.btn-secondary {
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+

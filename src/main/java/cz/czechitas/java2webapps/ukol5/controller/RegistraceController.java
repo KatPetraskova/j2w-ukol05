@@ -28,8 +28,8 @@ public class RegistraceController {
     public ModelAndView form(@Valid @ModelAttribute("formular") RegistraceForm form, BindingResult bindingResult) {
 
         if (form.getDatumNarozeni() != null) {
-            Period period = form.getDatumNarozeni().until(LocalDate.now());
-            int vek = period.getYears();
+            LocalDate narozeni = form.getDatumNarozeni();
+            int vek = Period.between(narozeni, LocalDate.now()).getYears();
             if (vek < 9 || vek > 15) {
                 bindingResult.rejectValue("datumNarozeni", "vek.nespravny",
                         "Věk dítěte musí být mezi 9 a 15 lety.");
@@ -42,8 +42,13 @@ public class RegistraceController {
                     .addObject("errors", bindingResult);
         }
 
-        return new ModelAndView("objednano")
-                .addObject("email", form.getEmail());
+        ModelAndView modelAndView = new ModelAndView("objednano");
+
+        modelAndView.addObject("formular", form);
+        modelAndView.addObject("datumNarozeniString",
+                form.getDatumNarozeni() != null ? form.getDatumNarozeni().toString() : "");
+        modelAndView.addObject("email", form.getEmail() != null ? form.getEmail() : "");
+        return new ModelAndView("objednano");
     }
 
 }
